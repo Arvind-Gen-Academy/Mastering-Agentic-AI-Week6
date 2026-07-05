@@ -1,0 +1,29 @@
+[project]
+name = "pii-redaction"
+version = "0.1.0"
+description = "Hospital patient intake chatbot with local PII redaction (Presidio) and an OpenAI LLM"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "langchain>=1.0,<2.0",
+    "langchain-core>=1.0,<2.0",
+    "langchain-openai>=1.0,<2.0",
+    "langgraph>=1.0,<2.0",
+    "presidio-analyzer>=2.2.0",
+    "presidio-anonymizer>=2.2.0",
+    "streamlit>=1.40.0",
+    "python-dotenv>=1.0.0",
+    "spacy>=3.7.0",
+    "en-core-web-lg",
+]
+
+[dependency-groups]
+# Notebook / local-dev tooling only — not needed by the app at runtime.
+# Installed by `uv sync` (dev groups sync by default), kept out of the app deps.
+dev = ["ipykernel>=6.29"]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+en-core-web-lg = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0-py3-none-any.whl" }
